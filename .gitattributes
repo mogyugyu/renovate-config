@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+*.json linguist-detectable
+.vscode/*.json -linguist-detectable linguist-language=JSON-with-Comments
+.prettierrc.json -linguist-detectable

@@ -1,0 +1,65 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": [
+		"Default preset for use with mogyugyu's repos"
+	],
+	"extends": [
+		"config:best-practices",
+		":assignAndReview(Mogyuchi)",
+		":disablePrControls",
+		"customManagers:githubActionsVersions"
+	],
+	"commitBodyTable": true,
+	"keepUpdatedLabel": "renovate: keep-updated",
+	"labels": [
+		"dependencies"
+	],
+	"lockFileMaintenance": {
+		"enabled": true
+	},
+	"prConcurrentLimit": 3,
+	"rebaseLabel": "renovate: rebase",
+	"stopUpdatingLabel": "renovate: stop-updating",
+	"packageRules": [
+		{
+			"matchPackageNames": [
+				"*"
+			],
+			"semanticCommitType": "chore"
+		},
+		{
+			"matchFileNames": [
+				".github/workflows/**"
+			],
+			"semanticCommitType": "ci"
+		},
+		{
+			"matchDepTypes": [
+				"devDependencies"
+			],
+			"semanticCommitType": "chore",
+			"semanticCommitScope": "deps-dev"
+		},
+		{
+			"matchFileNames": [
+				"**/Dockerfile"
+			],
+			"semanticCommitType": "build"
+		},
+		{
+			"matchUpdateTypes": [
+				"lockFileMaintenance"
+			],
+			"semanticCommitType": "deps",
+			"semanticCommitScope": null
+		},
+		{
+			"matchDepTypes": [
+				"dependencies",
+				"require"
+			],
+			"semanticCommitType": "deps",
+			"semanticCommitScope": null
+		}
+	]
+}

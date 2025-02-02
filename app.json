@@ -4,7 +4,7 @@
 		"app preset for use with mogyugyu's repos"
 	],
 	"extends": [
-		"github>mogyugyu/renovate-config",
-		"config:js-app"
+		"config:js-app",
+		"github>mogyugyu/renovate-config"
 	]
 }

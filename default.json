@@ -5,6 +5,7 @@
 	],
 	"extends": [
 		"config:best-practices",
+		"group:monorepos",
 		":assignAndReview(Mogyuchi)",
 		":disablePrControls",
 		"customManagers:githubActionsVersions"

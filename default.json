@@ -7,6 +7,7 @@
 		"config:best-practices",
 		":assignAndReview(Mogyuchi)",
 		":disablePrControls",
+		"customManagers:dockerfileVersions",
 		"customManagers:githubActionsVersions"
 	],
 	"commitBodyTable": true,

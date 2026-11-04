@@ -1,0 +1,32 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": [
+		"Track GitHub release assets that Dockerfiles and Containerfiles add with ADD --checksum"
+	],
+	"customManagers": [
+		{
+			"customType": "regex",
+			"description": "GitHub release assets added with ADD --checksum",
+			"managerFilePatterns": [
+				"**/[Dd]ockerfile*",
+				"**/[Cc]ontainerfile*",
+				"**/*.[Dd]ockerfile*",
+				"**/*.[Cc]ontainerfile*"
+			],
+			"matchStrings": [
+				"(?:^|\\n)[ \\t]*ADD[ \\t]+(?:--\\S+[ \\t]+)*--checksum=sha256:(?<currentDigest>[a-f0-9]{64})(?:[ \\t]+--\\S+)*[ \\t]*(?:\\\\\\s+)?(?<registryUrl>https?://[^\\s/]+)/(?<packageName>[^\\s/]+/[^\\s/]+)/releases/download/(?<currentValue>[^\\s/]+)/(?<assetName>[^\\s]+)"
+			],
+			"datasourceTemplate": "github-release-attachments",
+			"depTypeTemplate": "image-input"
+		}
+	],
+	"packageRules": [
+		{
+			"description": "These updates are container image build inputs",
+			"matchDatasources": [
+				"github-release-attachments"
+			],
+			"semanticCommitType": "build"
+		}
+	]
+}
